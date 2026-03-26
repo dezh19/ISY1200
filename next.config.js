@@ -10,10 +10,7 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  // Netlify-compatible output configuration
-  output: process.env.NETLIFY ? 'standalone' : undefined,
   // Optimize for production
-  swcMinify: true,
   compress: true,
   // Enable experimental features for better performance
   experimental: {
