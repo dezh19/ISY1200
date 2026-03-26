@@ -97,11 +97,6 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Decorative floating circles */}
-      <div className="absolute top-24 right-[8%] w-72 h-72 rounded-full border border-white/5 animate-pulse-slow hidden lg:block" />
-      <div className="absolute top-32 right-[10%] w-52 h-52 rounded-full border border-gold/10 animate-float hidden lg:block" />
-      <div className="absolute bottom-20 left-[5%] w-40 h-40 rounded-full border border-white/5 animate-float" style={{ animationDelay: "2s" }} />
-
       {/* Floating discipline badges */}
       <div className="absolute top-1/4 right-[3%] md:right-[6%] hidden lg:flex flex-col gap-3 md:gap-4">
         {[
