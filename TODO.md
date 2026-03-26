@@ -1,14 +1,7 @@
-# Task Progress: Fix deployment texts + Add dark mode toggle
+# TODO
 
-## Plan Steps
-- [x] 1. lib/utils.ts: Add useTheme hook (localStorage, html class toggle)
-- [x] 2. app/layout.tsx: Add ThemeProvider wrapper, html className from theme
-- [ ] 3. components/navbar.tsx: Add dark mode toggle button (sun/moon)
-- [ ] 4. Fix low-contrast texts in deployment components:
-  - [ ] components/acm-table.tsx
-  - [ ] components/ComparisonTable.tsx  
-  - [ ] components/DisciplinesSection.tsx
-  - [ ] components/discipline-cards.tsx
-- [ ] 5. Test with dev server + browser
-
-Current: Starting step 1.
+- [x] Update navbar link mapping so "The Fields" scrolls to the correct section (`#disciplines`).
+- [x] Add section-aware/navbar contrast behavior for light backgrounds while preserving active-state styling.
+- [x] Apply the same contrast behavior for both desktop and mobile navbar buttons/icons.
+- [x] Increase navbar icon sizes (brand circle and theme icon) as requested.
+- [ ] Run a quick lint/build validation check.

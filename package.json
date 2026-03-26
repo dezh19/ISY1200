@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && npm start",
+    "deploy:netlify": "npm run build && netlify deploy --prod",
+    "deploy:check": "npm run lint && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",

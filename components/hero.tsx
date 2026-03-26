@@ -146,7 +146,7 @@ export default function Hero() {
         ].map((d) => (
           <div
             key={d.abbr}
-            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/10 border border-white/15 text-white/85 text-sm font-medium backdrop-blur-sm hover:bg-white/15 transition-all cursor-default"
+            className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/20 border border-white/30 text-white text-sm font-semibold backdrop-blur-md hover:bg-white/25 transition-all cursor-default shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
           >
             <span
               className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"

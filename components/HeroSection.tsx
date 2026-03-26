@@ -21,14 +21,14 @@ export default function HeroSection() {
     canvas.height = canvas.offsetHeight
 
     const particles: { x: number; y: number; vx: number; vy: number; r: number; alpha: number }[] = []
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 90; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 2 + 0.5,
-        alpha: Math.random() * 0.5 + 0.1,
+        r: Math.random() * 2.4 + 0.8,
+        alpha: Math.random() * 0.45 + 0.25,
       })
     }
 
@@ -43,7 +43,7 @@ export default function HeroSection() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(201,168,76,${p.alpha})`
+        ctx.fillStyle = `rgba(255,215,90,${p.alpha})`
         ctx.fill()
       })
 
@@ -57,7 +57,7 @@ export default function HeroSection() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(201,168,76,${0.08 * (1 - dist / 100)})`
+            ctx.strokeStyle = `rgba(255,215,90,${0.12 * (1 - dist / 100)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -103,7 +103,7 @@ export default function HeroSection() {
       <div className="absolute bottom-20 left-[5%] w-40 h-40 rounded-full border border-white/5 animate-float" style={{ animationDelay: "2s" }} />
 
       {/* Floating discipline badges */}
-      <div className="absolute top-1/4 right-[6%] hidden xl:flex flex-col gap-4">
+      <div className="absolute top-1/4 right-[3%] md:right-[6%] hidden lg:flex flex-col gap-3 md:gap-4">
         {[
           { label: "Computer Science", icon: "⬡", color: "cs" },
           { label: "Information Technology", icon: "⬢", color: "it" },
@@ -111,19 +111,19 @@ export default function HeroSection() {
         ].map((item, i) => (
           <div
             key={item.label}
-            className="glass-card px-4 py-2.5 rounded-xl shadow-lg animate-float flex items-center gap-2.5 w-56"
+            className="glass-card px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl shadow-lg animate-float flex items-center gap-2 md:gap-2.5 w-48 md:w-56 text-xs md:text-sm"
             style={{ animationDelay: `${i * 0.8}s` }}
           >
-            <span className="text-lg">{item.icon}</span>
-            <span className="text-xs font-semibold text-navy">{item.label}</span>
+            <span className="text-base md:text-lg shrink-0">{item.icon}</span>
+            <span className="font-semibold text-navy line-clamp-2">{item.label}</span>
           </div>
         ))}
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-        <div className="max-w-3xl">
+      <div className="section-container relative pt-24 pb-16 sm:pt-32 sm:pb-20 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32">
+        <div className="max-w-2xl md:max-w-3xl">
           {/* Assignment badge */}
-          <div className="fade-in-up stagger-1 inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+          <div className="fade-in-up stagger-1 inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-gold animate-pulse-slow" />
             <span className="text-white/90 text-xs font-semibold tracking-wider uppercase">
               ISY1200 — Department of Computer Science
@@ -131,16 +131,16 @@ export default function HeroSection() {
           </div>
 
           {/* Main title */}
-          <h1 className="fade-in-up stagger-2 font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance mb-6">
+          <h1 className="fade-in-up stagger-2 font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance mb-6 md:mb-8">
             Computer Science,{" "}
             <span className="text-gold">Information Technology</span>,{" "}
             & Information Systems
           </h1>
 
-          <p className="fade-in-up stagger-3 text-lg sm:text-xl text-white/80 leading-relaxed mb-3 text-pretty">
+          <p className="fade-in-up stagger-3 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-3 md:mb-4 text-pretty">
             Understanding the Differences
           </p>
-          <p className="fade-in-up stagger-4 text-sm text-white/60 mb-10 flex items-center gap-2">
+          <p className="fade-in-up stagger-4 text-xs sm:text-sm md:text-base text-white/60 mb-10 md:mb-12 flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
@@ -148,11 +148,11 @@ export default function HeroSection() {
           </p>
 
           {/* CTA buttons */}
-          <div className="fade-in-up stagger-5 flex flex-wrap gap-4 mb-16">
+          <div className="fade-in-up stagger-5 flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 mb-16 md:mb-20">
             <button
               onClick={() => scrollTo("disciplines")}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gold text-navy font-bold text-sm
-                hover:bg-gold/90 transition-all duration-200 shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-gold text-navy font-bold text-sm sm:text-base
+                hover:bg-gold/90 transition-all duration-200 shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 hover:-translate-y-0.5active:scale-95"
             >
               Explore the Fields
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -161,19 +161,19 @@ export default function HeroSection() {
             </button>
             <button
               onClick={() => scrollTo("comparison")}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-white/10 text-white font-semibold text-sm border border-white/20
-                hover:bg-white/20 transition-all duration-200 backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-white/10 text-white font-semibold text-sm sm:text-base border border-white/20
+                hover:bg-white/20 transition-all duration-200 backdrop-blur-sm active:scale-95"
             >
               View Comparison Table
             </button>
           </div>
 
           {/* Stats row */}
-          <div className="fade-in-up grid grid-cols-3 gap-4 max-w-lg" style={{ animationDelay: "0.6s" }}>
+          <div className="fade-in-up grid grid-cols-3 gap-6 sm:gap-8 max-w-lg" style={{ animationDelay: "0.6s" }}>
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center border-r border-white/10 last:border-0 pr-4 last:pr-0">
-                <div className="font-serif text-3xl font-bold text-gold">{stat.value}</div>
-                <div className="text-white/60 text-xs mt-0.5 leading-tight">{stat.label}</div>
+              <div key={stat.label} className="text-center border-r border-white/10 last:border-0 pr-6 sm:pr-8 last:pr-0">
+                <div className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-gold">{stat.value}</div>
+                <div className="text-white/60 text-xs sm:text-sm mt-2 sm:mt-1 leading-tight">{stat.label}</div>
               </div>
             ))}
           </div>

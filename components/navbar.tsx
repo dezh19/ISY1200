@@ -5,7 +5,7 @@ import { cn, useTheme } from '@/lib/utils'
 
 const navLinks = [
   { label: 'Introduction', href: '#introduction' },
-  { label: 'The Fields', href: '#fields' },
+  { label: 'The Fields', href: '#disciplines' },
   { label: 'Comparison', href: '#comparison' },
   { label: 'Analogy', href: '#analogy' },
   { label: 'Careers', href: '#careers' },
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [isLightSection, setIsLightSection] = useState(false)
 
   const { toggleTheme } = useTheme()
 
@@ -29,8 +30,18 @@ export default function Navbar() {
         const el = document.getElementById(id)
         if (el && window.scrollY >= el.offsetTop - 120) {
           setActiveSection(id)
+
+          const hasLightBg =
+            el.classList.contains('bg-white') ||
+            el.classList.contains('bg-surface') ||
+            el.classList.contains('bg-card')
+          setIsLightSection(hasLightBg)
           break
         }
+      }
+
+      if (window.scrollY < 40) {
+        setIsLightSection(false)
       }
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -50,20 +61,22 @@ export default function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         scrolled
           ? 'bg-navy shadow-lg shadow-navy/30 backdrop-blur-md'
-          : 'bg-transparent',
+          : isLightSection
+            ? 'bg-white/85 backdrop-blur-md border-b border-navy/10'
+            : 'bg-transparent',
       )}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <nav className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between h-16">
         {/* Logo / Identity */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center font-serif font-bold text-navy text-sm select-none">
+          <div className="w-11 h-11 rounded-full bg-gold flex items-center justify-center font-serif font-bold text-navy text-base select-none">
             UG
           </div>
           <div className="leading-tight hidden sm:block">
-            <p className="text-xs font-semibold text-white/90 tracking-widest uppercase">
+            <p className={cn('text-xs font-semibold tracking-widest uppercase', isLightSection ? 'text-navy' : 'text-white/90')}>
               University of Guyana
             </p>
-            <p className="text-[10px] text-white/55 tracking-wide">
+            <p className={cn('text-[10px] tracking-wide', isLightSection ? 'text-navy/60' : 'text-white/55')}>
               Dept. of Computer Science · ISY1200
             </p>
           </div>
@@ -79,10 +92,12 @@ export default function Navbar() {
                   <button
                     onClick={() => handleNavClick(link.href)}
                     className={cn(
-                      'px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200',
+                      'px-4 py-2 rounded-md text-base font-semibold transition-all duration-200',
                       activeSection === id
                         ? 'bg-gold text-navy'
-                        : 'text-white/75 hover:text-white hover:bg-white/10',
+                        : isLightSection
+                          ? 'text-navy/75 hover:text-navy hover:bg-navy/10'
+                          : 'text-white/75 hover:text-white hover:bg-white/10',
                     )}
                   >
                     {link.label}
@@ -95,12 +110,15 @@ export default function Navbar() {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-white/20 transition-all duration-200 flex items-center justify-center w-10 h-10"
+            className={cn(
+              'p-2 rounded-lg transition-all duration-200 flex items-center justify-center w-11 h-11',
+              isLightSection ? 'hover:bg-navy/10 text-navy' : 'hover:bg-white/20 text-white',
+            )}
             aria-label="Toggle dark mode"
             title="Toggle dark mode"
           >
             <svg
-              className="w-5 h-5 transition-all duration-300"
+              className="w-6 h-6 transition-all duration-300"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -110,7 +128,7 @@ export default function Navbar() {
             </svg>
             {/* Moon icon - shown in light mode */}
             <svg
-              className="w-5 h-5 transition-all duration-300 hidden dark:block"
+              className="w-6 h-6 transition-all duration-300 hidden dark:block"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -122,24 +140,30 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-white/10 transition"
+          className={cn(
+            'lg:hidden flex flex-col gap-1.5 p-2 rounded-md transition',
+            isLightSection ? 'hover:bg-navy/10' : 'hover:bg-white/10',
+          )}
           aria-label="Toggle menu"
         >
           <span
             className={cn(
-              'block w-5 h-0.5 bg-white transition-all duration-300',
+              'block w-5 h-0.5 transition-all duration-300',
+              isLightSection ? 'bg-navy' : 'bg-white',
               menuOpen && 'rotate-45 translate-y-2',
             )}
           />
           <span
             className={cn(
-              'block w-5 h-0.5 bg-white transition-all duration-300',
+              'block w-5 h-0.5 transition-all duration-300',
+              isLightSection ? 'bg-navy' : 'bg-white',
               menuOpen && 'opacity-0',
             )}
           />
           <span
             className={cn(
-              'block w-5 h-0.5 bg-white transition-all duration-300',
+              'block w-5 h-0.5 transition-all duration-300',
+              isLightSection ? 'bg-navy' : 'bg-white',
               menuOpen && '-rotate-45 -translate-y-2',
             )}
           />
@@ -161,7 +185,7 @@ export default function Navbar() {
                 <button
                   onClick={() => handleNavClick(link.href)}
                   className={cn(
-                    'w-full text-left px-4 py-2.5 rounded-md text-sm font-medium transition-all',
+                    'w-full text-left px-4 py-3 rounded-md text-base font-semibold transition-all',
                     activeSection === id
                       ? 'bg-gold text-navy'
                       : 'text-white/80 hover:bg-white/10 hover:text-white',

@@ -84,30 +84,30 @@ export default function AnalogySection() {
   }, [])
 
   return (
-    <section id="analogy" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+    <section id="analogy" ref={sectionRef} className="py-20 sm:py-28 md:py-32 lg:py-40 bg-white relative overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-1 section-divider" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="section-container">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="reveal inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-secondary text-navy text-xs font-semibold uppercase tracking-wider border border-border">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+        <div className="text-center mb-16 sm:mb-20 md:mb-24 lg:mb-28 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-3 sm:px-4 py-1.5 rounded-full bg-secondary text-navy text-xs font-semibold uppercase tracking-wider border border-border">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
             Real-World Analogy
           </div>
-          <h2 className="reveal font-serif text-3xl sm:text-4xl font-bold text-navy text-balance mb-4">
+          <h2 className="reveal font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-navy text-balance mb-4 sm:mb-6 md:mb-8">
             Think of It Like an Automobile
           </h2>
-          <div className="reveal w-16 h-1 rounded-full mx-auto mb-5" style={{ background: "linear-gradient(90deg, oklch(0.32 0.12 255), oklch(0.78 0.14 85))" }} />
-          <p className="reveal max-w-2xl mx-auto text-muted-foreground leading-relaxed">
+          <div className="reveal w-12 sm:w-14 md:w-16 h-1 rounded-full mx-auto mb-6 sm:mb-8 md:mb-10" style={{ background: "linear-gradient(90deg, oklch(0.32 0.12 255), oklch(0.78 0.14 85))" }} />
+          <p className="reveal max-w-2xl mx-auto text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed">
             Each discipline plays a distinct but equally important role. Click on any card to expand the full analogy and see how they relate to each other.
           </p>
         </div>
 
         {/* Engine diagram - visual connector */}
-        <div className="reveal relative mb-12 hidden md:flex items-center justify-center gap-0">
+        <div className="reveal relative mb-14 sm:mb-16 md:mb-20 hidden md:flex items-center justify-center gap-0">
           {analogies.map((a, i) => (
             <div key={a.id} className="flex items-center">
               <div
@@ -131,28 +131,30 @@ export default function AnalogySection() {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 md:gap-8 lg:gap-10 mb-16 sm:mb-20 md:mb-24 lg:mb-28">
           {analogies.map((a) => (
             <div
               key={a.id}
-              className={`reveal rounded-2xl border-2 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1
+              className={`reveal rounded-xl sm:rounded-2xl border-2 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1
                 ${active === a.id ? "border-opacity-80 shadow-lg" : "border-border"}`}
               style={active === a.id ? { borderColor: a.color } : {}}
               onClick={() => setActive(active === a.id ? null : a.id)}
             >
               {/* Card header */}
-              <div className="p-6 text-white relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${a.color}, ${a.color})` }}>
+              <div className="p-6 sm:p-7 md:p-8 text-white relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${a.color}, ${a.color})` }}>
                 <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
-                <div className="relative flex items-start justify-between">
+                <div className="relative flex items-start justify-between gap-3">
                   <div>
                     <span className="text-white/70 text-xs font-semibold uppercase tracking-wider">{a.role}</span>
-                    <h3 className="font-serif text-xl font-bold mt-1 text-balance leading-tight">{a.metaphor}</h3>
+                    <h3 className="font-serif text-lg sm:text-xl font-bold mt-2 sm:mt-3 text-balance leading-tight">{a.metaphor}</h3>
                   </div>
-                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0 ml-3">
-                    {a.icon}
-                  </div>
+                  {a.icon && (
+                    <div className="w-12 h-12 rounded-lg sm:rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                      {a.icon}
+                    </div>
+                  )}
                 </div>
-                <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-white/90 text-xs font-medium">
+                <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 text-white/90 text-xs font-medium">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" /><path d="M12 8v4M12 16h.01" />
                   </svg>
@@ -161,19 +163,19 @@ export default function AnalogySection() {
               </div>
 
               {/* Card body */}
-              <div className="p-6 bg-card">
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{a.description}</p>
+              <div className="p-6 sm:p-7 md:p-8 bg-card">
+                <p className="text-sm leading-relaxed mb-5 text-muted-foreground">{a.description}</p>
 
                 {/* Expandable detail */}
-                <div className={`overflow-hidden transition-all duration-400 ${active === a.id ? "max-h-32 opacity-100" : "max-h-0 opacity-0"}`}>
-                  <div className="pt-4 border-t border-border">
+                <div className={`overflow-hidden transition-all duration-400 ${active === a.id ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+                  <div className="pt-5 border-t border-border">
                     <p className="text-xs text-muted-foreground italic leading-relaxed">
                       <span className="font-semibold text-navy">Their core question:</span> {a.detail}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 mt-4 text-xs font-medium" style={{ color: a.color }}>
+                <div className="flex items-center gap-1.5 mt-5 text-xs font-medium" style={{ color: a.color }}>
                   {active === a.id ? "Click to collapse" : "Click to expand"}
                   <svg
                     width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
@@ -188,9 +190,9 @@ export default function AnalogySection() {
         </div>
 
         {/* Summary bar */}
-        <div className="reveal mt-12 bg-navy rounded-2xl p-8 text-center">
-          <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-3">The Key Takeaway</p>
-          <p className="text-white text-lg font-serif leading-relaxed text-balance max-w-3xl mx-auto">
+        <div className="reveal bg-navy rounded-xl sm:rounded-2xl p-8 sm:p-10 md:p-12 lg:p-16 text-center">
+          <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">The Key Takeaway</p>
+          <p className="text-white text-base sm:text-lg md:text-xl font-serif leading-relaxed text-balance max-w-3xl mx-auto">
             "All three disciplines are interdependent — an organisation needs{" "}
             <span className="text-gold">CS to build</span>,{" "}
             <span style={{ color: "oklch(0.72 0.16 195)" }}>IT to maintain</span>, and{" "}

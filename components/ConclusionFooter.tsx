@@ -118,12 +118,12 @@ export default function ConclusionFooter() {
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </div>
-              <p className="font-serif text-2xl md:text-3xl font-bold text-white leading-tight text-balance mb-6">
+              <p className="font-serif text-2xl md:text-3xl font-bold text-black leading-tight text-balance mb-6">
                 Whichever path you choose, the Department of Computer Science at the{" "}
                 <span className="text-gold">University of Guyana</span>{" "}
                 is equipped to take you there.
               </p>
-              <p className="text-white/60 text-sm leading-relaxed max-w-xl mx-auto">
+              <p className="text-black/70 text-sm leading-relaxed max-w-xl mx-auto">
                 Our ACM-aligned programmes in CS, IT, and IS are designed to produce graduates who are ready to contribute, innovate, and lead in the digital economy — regionally and internationally.
               </p>
             </div>

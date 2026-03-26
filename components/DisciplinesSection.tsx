@@ -201,40 +201,41 @@ export default function DisciplinesSection() {
   }
 
   return (
-    <section id="disciplines" ref={sectionRef} className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="disciplines" ref={sectionRef} className="py-20 sm:py-28 md:py-32 lg:py-40 bg-white">
+      <div className="section-container">
         {/* Header */}
-        <div className="text-center mb-14 reveal">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-secondary text-navy text-xs font-semibold uppercase tracking-wider border border-border">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+        <div className="text-center mb-14 sm:mb-18 md:mb-20 lg:mb-24 reveal">
+          <div className="inline-flex items-center gap-2 mb-5 px-3 sm:px-4 py-1.5 rounded-full bg-secondary text-navy text-xs font-semibold uppercase tracking-wider border border-border">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
             The Three Disciplines
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-navy text-balance mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-navy text-balance mb-4 sm:mb-6 md:mb-8">
             Explore Each Field in Depth
           </h2>
-          <div className="w-16 h-1 rounded-full mx-auto mb-5" style={{ background: "linear-gradient(90deg, oklch(0.32 0.12 255), oklch(0.78 0.14 85))" }} />
-          <p className="max-w-xl mx-auto text-muted-foreground leading-relaxed">
+          <div className="w-12 sm:w-14 md:w-16 h-1 rounded-full mx-auto mb-6 sm:mb-8 md:mb-10" style={{ background: "linear-gradient(90deg, oklch(0.32 0.12 255), oklch(0.78 0.14 85))" }} />
+          <p className="max-w-xl mx-auto text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed">
             Select a discipline below to explore its focus, topics, skill demands, and career pathways.
           </p>
         </div>
 
         {/* Tab switcher */}
-        <div className="reveal flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <div className="reveal flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 justify-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
           {disciplines.map((d) => (
             <button
               key={d.id}
               onClick={() => setActive(d.id as TabId)}
-              className={`group flex items-center gap-3 px-6 py-4 rounded-2xl font-semibold text-sm border-2 transition-all duration-300 shadow-sm hover:shadow-md
+              className={`group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 px-4 sm:px-6 md:px-7 py-3 sm:py-4 md:py-5 rounded-lg sm:rounded-2xl font-semibold text-sm border-2 transition-all duration-300 shadow-sm hover:shadow-md
                 ${active === d.id
                   ? "text-white border-transparent shadow-lg scale-105"
                   : "bg-card text-navy border-border hover:-translate-y-0.5"
                 }`}
               style={active === d.id ? { background: gradientMap[d.id as TabId] } : {}}
             >
-              <span className={`${active === d.id ? "text-white" : `${d.accentColor}`}`}>{d.icon}</span>
-              <span>{d.name}</span>
+              <span className={`text-lg md:text-xl ${active === d.id ? "text-white" : `${d.accentColor}`}`}>{d.icon}</span>
+              <span className="hidden sm:inline text-sm md:text-base">{d.name}</span>
+              <span className="sm:hidden font-bold text-xs md:text-sm">{d.short}</span>
               {active === d.id && (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="hidden sm:block">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               )}
@@ -243,66 +244,66 @@ export default function DisciplinesSection() {
         </div>
 
         {/* Detail panel */}
-        <div key={active} className="grid lg:grid-cols-5 gap-6 fade-in-up">
+        <div key={active} className="grid lg:grid-cols-5 gap-5 sm:gap-7 md:gap-8 lg:gap-10 fade-in-up">
           {/* Left: info */}
-          <div className="lg:col-span-3 space-y-5">
+          <div className="lg:col-span-3 space-y-5 sm:space-y-7 md:space-y-8">
             {/* Header card */}
             <div
-              className="rounded-2xl p-8 text-white relative overflow-hidden"
+              className="rounded-xl sm:rounded-2xl p-7 sm:p-9 md:p-10 text-white relative overflow-hidden"
               style={{ background: gradientMap[active] }}
             >
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/4 translate-x-1/4" />
               <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-white/5 translate-y-1/3 -translate-x-1/4" />
               <div className="relative">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-white/15 flex items-center justify-center">
+                <div className="flex items-start justify-between mb-5 sm:mb-6 md:mb-7">
+                  <div className="w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 rounded-lg sm:rounded-xl md:rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
                     {disc.icon}
                   </div>
-                  <span className="text-white/60 font-serif font-bold text-5xl">{disc.short}</span>
+                  <span className="text-white/60 font-serif font-bold text-5xl sm:text-6xl md:text-7xl leading-none">{disc.short}</span>
                 </div>
-                <h3 className="font-serif text-2xl font-bold mb-1">{disc.name}</h3>
-                <p className="text-white/70 text-sm mb-4">{disc.tagline}</p>
-                <p className="text-white/85 text-sm leading-relaxed italic border-l-2 border-white/30 pl-4">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">{disc.name}</h3>
+                <p className="text-white/70 text-sm sm:text-base mb-5 sm:mb-6">{disc.tagline}</p>
+                <p className="text-white/85 text-sm sm:text-base leading-relaxed italic border-l-3 border-white/30 pl-4 sm:pl-5">
                   "{disc.quote}"
                 </p>
               </div>
             </div>
 
             {/* ACM description */}
-            <div className="bg-card rounded-2xl p-6 border border-border">
-              <p className="text-xs font-semibold text-gold uppercase tracking-wider mb-3">ACM Curriculum Description</p>
-              <p className="text-foreground text-sm leading-relaxed">{disc.acmDesc}</p>
-              <div className="mt-4 p-3 rounded-xl bg-secondary flex gap-3 items-start">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="oklch(0.32 0.12 255)" strokeWidth="2" className="shrink-0 mt-0.5">
+            <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 border border-border">
+              <p className="text-xs font-semibold text-gold uppercase tracking-wider mb-3 sm:mb-4">ACM Curriculum Description</p>
+              <p className="text-foreground text-sm sm:text-base leading-relaxed mb-5">{disc.acmDesc}</p>
+              <div className="p-4 sm:p-5 rounded-lg sm:rounded-xl bg-secondary flex gap-3 sm:gap-4 items-start">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="oklch(0.32 0.12 255)" strokeWidth="2" className="shrink-0 mt-0.5">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 8v4M12 16h.01" />
                 </svg>
-                <p className="text-xs text-navy/80 leading-relaxed"><strong className="text-navy">Core Focus:</strong> {disc.focus}</p>
+                <p className="text-xs sm:text-sm text-navy/80 leading-relaxed"><strong className="text-navy">Core Focus:</strong> {disc.focus}</p>
               </div>
             </div>
 
             {/* Skill levels */}
-            <div className="bg-card rounded-2xl p-6 border border-border">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-5">Skill Emphasis Profile</p>
-              <div className="space-y-4">
+            <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 border border-border">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-5 sm:mb-6 md:mb-7">Skill Emphasis Profile</p>
+              <div className="space-y-4 sm:space-y-5">
                 <SkillBar label="Mathematics & Theory" value={disc.mathLevel} color={barColorMap[active]} />
                 <SkillBar label="Practical / Technical" value={disc.practiceLevel} color={barColorMap[active]} />
                 <SkillBar label="Business & Organisational" value={disc.businessLevel} color={barColorMap[active]} />
               </div>
-              <p className="mt-5 text-xs text-muted-foreground italic">{disc.strength}</p>
+              <p className="mt-6 sm:mt-7 text-xs text-muted-foreground italic">{disc.strength}</p>
             </div>
           </div>
 
           {/* Right: topics + careers */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="lg:col-span-2 space-y-5 sm:space-y-7 md:space-y-8">
             {/* Topics */}
-            <div className="bg-card rounded-2xl p-6 border border-border">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">Key Topics & Courses</p>
-              <div className="grid grid-cols-1 gap-2">
+            <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 border border-border">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 sm:mb-5 md:mb-6">Key Topics & Courses</p>
+              <div className="grid grid-cols-1 gap-2.5">
                 {disc.topics.map((topic, i) => (
-                  <div key={topic} className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-secondary transition-colors">
+                  <div key={topic} className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors">
                     <span
-                      className="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
                       style={{ background: gradientMap[active] }}
                     >
                       {i + 1}
@@ -314,19 +315,19 @@ export default function DisciplinesSection() {
             </div>
 
             {/* Careers */}
-            <div className="bg-card rounded-2xl p-6 border border-border">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4">Career Pathways</p>
+            <div className="bg-card rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 border border-border">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 sm:mb-5 md:mb-6">Career Pathways</p>
               <div className="space-y-2.5">
                 {disc.careers.map((career) => (
                   <div
                     key={career.title}
-                    className="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/30 hover:bg-secondary/50 transition-all cursor-default"
+                    className="flex items-center gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-lg sm:rounded-xl border border-border hover:border-primary/30 hover:bg-secondary/50 transition-all cursor-default"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-lg shrink-0">
+                    <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-lg bg-secondary flex items-center justify-center text-base sm:text-lg shrink-0">
                       {career.icon}
                     </div>
-                    <span className="text-sm font-medium text-navy">{career.title}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-muted-foreground">
+                    <span className="text-xs sm:text-sm font-medium text-navy">{career.title}</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-muted-foreground shrink-0">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
