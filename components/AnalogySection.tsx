@@ -190,11 +190,11 @@ export default function AnalogySection() {
         </div>
 
         {/* Summary bar */}
-        <div className="reveal bg-navy rounded-xl sm:rounded-2xl p-8 sm:p-10 md:p-12 lg:p-16 text-center">
-          <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">The Key Takeaway</p>
-          <p className="text-white text-base sm:text-lg md:text-xl font-serif leading-relaxed text-balance max-w-3xl mx-auto">
+        <div className="reveal bg-slate-900 rounded-xl sm:rounded-2xl p-8 sm:p-10 md:p-12 lg:p-16 text-center">
+          <p className="text-slate-300 text-xs font-semibold uppercase tracking-wider mb-4 sm:mb-5 md:mb-6">The Key Takeaway</p>
+          <p className="text-slate-100 text-base sm:text-lg md:text-xl font-serif leading-relaxed text-balance max-w-3xl mx-auto">
             "All three disciplines are interdependent — an organisation needs{" "}
-            <span className="text-gold">CS to build</span>,{" "}
+            <span className="text-amber-300">CS to build</span>,{" "}
             <span style={{ color: "oklch(0.72 0.16 195)" }}>IT to maintain</span>, and{" "}
             <span style={{ color: "oklch(0.72 0.14 145)" }}>IS to strategically leverage</span>{" "}
             its technology for competitive advantage."

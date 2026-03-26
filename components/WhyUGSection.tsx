@@ -120,9 +120,9 @@ export default function WhyUGSection() {
         {/* Stats bar */}
         <div className="reveal grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
           {stats.map((s) => (
-            <div key={s.label} className="bg-navy rounded-2xl p-6 text-center">
-              <div className="font-serif text-3xl font-bold text-gold mb-1">{s.value}</div>
-              <div className="text-white/60 text-xs">{s.label}</div>
+            <div key={s.label} className="bg-slate-900 rounded-2xl p-6 text-center">
+              <div className="font-serif text-3xl font-bold text-amber-300 mb-1">{s.value}</div>
+              <div className="text-slate-200 text-xs">{s.label}</div>
             </div>
           ))}
         </div>
