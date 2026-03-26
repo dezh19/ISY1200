@@ -10,6 +10,8 @@ const nextConfig = {
   images: {
     domains: [],
   },
+  // Enable standalone output for Netlify
+  output: 'standalone',
   // Optimize for production
   compress: true,
   // Enable experimental features for better performance
