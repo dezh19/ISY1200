@@ -100,9 +100,10 @@ export default function HeroSection() {
       {/* Floating discipline badges */}
       <div className="absolute top-1/4 right-[3%] md:right-[6%] hidden lg:flex flex-col gap-3 md:gap-4">
         {[
-          { label: "Computer Science", icon: "⬡", color: "cs" },
-          { label: "Information Technology", icon: "⬢", color: "it" },
-          { label: "Information Systems", icon: "⬟", color: "is" },
+          { label: "Shailendra Haripersaud", id: "1043300", icon: "⬡", color: "cs" },
+          { label: "Prakash Dindyal", id: "1057546", icon: "⬢", color: "it" },
+          { label: "Deshawn Mitchell", id: "1057711", icon: "⬟", color: "is" },
+          { label: "Aaliyah Trotz", id: "1058875", icon: "⬠", color: "cs" },
         ].map((item, i) => (
           <div
             key={item.label}
@@ -110,7 +111,10 @@ export default function HeroSection() {
             style={{ animationDelay: `${i * 0.8}s` }}
           >
             <span className="text-base md:text-lg shrink-0">{item.icon}</span>
-            <span className="font-semibold text-navy line-clamp-2">{item.label}</span>
+            <div className="font-semibold text-navy line-clamp-2 flex flex-col">
+              <span>{item.label}</span>
+              <span className="text-navy/70 text-xs font-normal">{item.id}</span>
+            </div>
           </div>
         ))}
       </div>
