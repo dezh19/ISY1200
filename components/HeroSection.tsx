@@ -107,13 +107,13 @@ export default function HeroSection() {
         ].map((item, i) => (
           <div
             key={item.label}
-            className="glass-card px-3 md:px-4 py-2 md:py-2.5 rounded-lg md:rounded-xl shadow-lg animate-float flex items-center gap-2 md:gap-2.5 w-48 md:w-56 text-xs md:text-sm"
+            className="glass-card px-4 md:px-5 py-3 md:py-3.5 rounded-lg md:rounded-xl shadow-lg animate-float flex items-center gap-3 md:gap-3.5 w-56 md:w-64"
             style={{ animationDelay: `${i * 0.8}s` }}
           >
-            <span className="text-base md:text-lg shrink-0">{item.icon}</span>
-            <div className="font-semibold text-navy line-clamp-2 flex flex-col">
-              <span>{item.label}</span>
-              <span className="text-navy/70 text-xs font-normal">{item.id}</span>
+            <span className="text-lg md:text-2xl shrink-0">{item.icon}</span>
+            <div className="font-semibold text-white flex flex-col">
+              <span className="text-sm md:text-base leading-tight">{item.label}</span>
+              <span className="text-gold text-xs md:text-sm font-semibold">{item.id}</span>
             </div>
           </div>
         ))}
